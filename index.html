@@ -119,9 +119,19 @@ section .eyebrow.on-dark{color:var(--gold-soft)}
 @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-40px)}}
 .hero .container{position:relative;z-index:2}
 .hero h1{font-size:clamp(2.7rem,6.4vw,5.2rem);max-width:16ch}
-.hero h1 .grad{background:linear-gradient(100deg,var(--gold-soft),var(--green-bright));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 .grad{background:linear-gradient(100deg,var(--gold-soft),var(--green-bright),var(--gold-soft));background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 7s linear infinite}
+@keyframes shimmer{to{background-position:220% center}}
 .hero p.lead{font-size:clamp(1.05rem,1.7vw,1.32rem);max-width:54ch;color:rgba(255,255,255,.82);margin:26px 0 36px}
 .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+/* hero pulsing glow + headline entrance */
+.hero::after{content:"";position:absolute;width:60vw;height:60vw;max-width:760px;max-height:760px;top:8%;left:42%;transform:translateX(-50%);background:radial-gradient(circle,rgba(46,156,107,.28),transparent 62%);filter:blur(20px);z-index:0;animation:heroGlow 9s ease-in-out infinite}
+@keyframes heroGlow{0%,100%{opacity:.55;transform:translateX(-50%) scale(1)}50%{opacity:.9;transform:translateX(-50%) scale(1.12)}}
+.hero .container>*{opacity:0;transform:translateY(26px);animation:heroIn .9s var(--ease) forwards}
+.hero .eyebrow{animation-delay:.05s}
+.hero h1{animation-delay:.18s}
+.hero p.lead{animation-delay:.34s}
+.hero-actions{animation-delay:.5s}
+@keyframes heroIn{to{opacity:1;transform:none}}
 .scroll-cue{position:absolute;bottom:28px;right:34px;left:auto;z-index:1;color:rgba(255,255,255,.5);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px}
 .scroll-cue .line{width:1px;height:46px;background:linear-gradient(var(--gold),transparent);animation:cue 2s ease-in-out infinite}
 @keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:1}}
@@ -138,7 +148,9 @@ section{padding:clamp(70px,10vw,130px) 0}
 
 /* ---------- stat band ---------- */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:30px}
-.stat .num{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.4rem);color:var(--gold-soft);line-height:1}
+.stat .num{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.4rem);color:var(--gold-soft);line-height:1;display:inline-block;position:relative;padding-bottom:12px}
+.stat .num::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold),var(--green-bright));border-radius:3px;transition:width .9s var(--ease) .3s}
+.stat.in .num::after{width:48px}
 .stat .lbl{margin-top:10px;font-size:.92rem;color:rgba(255,255,255,.7)}
 
 /* ---------- service cards ---------- */
@@ -149,9 +161,10 @@ section{padding:clamp(70px,10vw,130px) 0}
   position:relative;overflow:hidden;
 }
 .card::before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:linear-gradient(90deg,var(--green-bright),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
-.card:hover{transform:translateY(-8px);box-shadow:var(--shadow)}
+.card:hover{transform:translateY(-10px);box-shadow:var(--shadow);border-color:rgba(31,111,78,.28)}
 .card:hover::before{transform:scaleX(1)}
-.card .ic{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#e8f3ec,#d6ebdd);display:grid;place-items:center;margin-bottom:22px;color:var(--green)}
+.card .ic{width:54px;height:54px;border-radius:14px;background:linear-gradient(135deg,#e8f3ec,#d6ebdd);display:grid;place-items:center;margin-bottom:22px;color:var(--green);transition:transform .45s var(--ease)}
+.card:hover .ic{transform:scale(1.08) rotate(-3deg)}
 .card .ic svg{width:27px;height:27px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .icon{display:inline-flex;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .card h3{font-size:1.4rem;margin-bottom:12px}
@@ -302,12 +315,16 @@ section{padding:clamp(70px,10vw,130px) 0}
 .marquee.rev .logo-track{animation-direction:reverse;animation-duration:54s}
 .logos-band:hover .logo-track{animation-play-state:paused}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.logo-item{font-family:var(--serif);font-weight:600;font-size:1.3rem;letter-spacing:.01em;white-space:nowrap;color:var(--forest);opacity:.45;transition:opacity .3s,color .3s,transform .3s}
+.logo-item{display:flex;align-items:center;font-family:var(--serif);font-weight:600;font-size:1.3rem;letter-spacing:.01em;white-space:nowrap;color:var(--forest);opacity:.5;transition:opacity .3s,color .3s,transform .3s}
 .logo-item:hover{opacity:1;color:var(--green);transform:translateY(-2px)}
+.logo-item img{height:32px;width:auto;max-width:160px;object-fit:contain;display:block;filter:grayscale(100%)}
+.logo-item:hover img{filter:none}
 
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
+  .hero .container>*{opacity:1;transform:none}
+  .stat .num::after{width:48px}
 }
 
 /* ===========================================================
@@ -406,14 +423,14 @@ section{padding:clamp(70px,10vw,130px) 0}
   <div class="lead-row"><span class="eyebrow">Experience &amp; portfolio across world-class companies</span></div>
   <div class="marquee">
     <div class="logo-track">
-      <span class="logo-item">Telefónica</span><span class="logo-item">O2</span><span class="logo-item">Vodafone</span><span class="logo-item">Hewlett-Packard</span><span class="logo-item">Compaq</span><span class="logo-item">KPMG</span><span class="logo-item">Adecco</span><span class="logo-item">VEON</span>
-      <span class="logo-item">Telefónica</span><span class="logo-item">O2</span><span class="logo-item">Vodafone</span><span class="logo-item">Hewlett-Packard</span><span class="logo-item">Compaq</span><span class="logo-item">KPMG</span><span class="logo-item">Adecco</span><span class="logo-item">VEON</span>
+      <span class="logo-item"><img src="https://img.logo.dev/telefonica.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Telefónica" loading="lazy" onerror="this.parentNode.textContent='Telefónica'"></span><span class="logo-item"><img src="https://img.logo.dev/o2.co.uk?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="O2" loading="lazy" onerror="this.parentNode.textContent='O2'"></span><span class="logo-item"><img src="https://img.logo.dev/vodafone.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Vodafone" loading="lazy" onerror="this.parentNode.textContent='Vodafone'"></span><span class="logo-item"><img src="https://img.logo.dev/hp.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Hewlett-Packard" loading="lazy" onerror="this.parentNode.textContent='Hewlett-Packard'"></span><span class="logo-item"><img src="https://img.logo.dev/kpmg.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="KPMG" loading="lazy" onerror="this.parentNode.textContent='KPMG'"></span><span class="logo-item"><img src="https://img.logo.dev/adecco.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Adecco" loading="lazy" onerror="this.parentNode.textContent='Adecco'"></span><span class="logo-item"><img src="https://img.logo.dev/veon.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="VEON" loading="lazy" onerror="this.parentNode.textContent='VEON'"></span><span class="logo-item">Compaq</span>
+      <span class="logo-item"><img src="https://img.logo.dev/telefonica.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Telefónica" loading="lazy" onerror="this.parentNode.textContent='Telefónica'"></span><span class="logo-item"><img src="https://img.logo.dev/o2.co.uk?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="O2" loading="lazy" onerror="this.parentNode.textContent='O2'"></span><span class="logo-item"><img src="https://img.logo.dev/vodafone.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Vodafone" loading="lazy" onerror="this.parentNode.textContent='Vodafone'"></span><span class="logo-item"><img src="https://img.logo.dev/hp.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Hewlett-Packard" loading="lazy" onerror="this.parentNode.textContent='Hewlett-Packard'"></span><span class="logo-item"><img src="https://img.logo.dev/kpmg.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="KPMG" loading="lazy" onerror="this.parentNode.textContent='KPMG'"></span><span class="logo-item"><img src="https://img.logo.dev/adecco.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Adecco" loading="lazy" onerror="this.parentNode.textContent='Adecco'"></span><span class="logo-item"><img src="https://img.logo.dev/veon.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="VEON" loading="lazy" onerror="this.parentNode.textContent='VEON'"></span><span class="logo-item">Compaq</span>
     </div>
   </div>
   <div class="marquee rev">
     <div class="logo-track">
-      <span class="logo-item">Virtualstock</span><span class="logo-item">Elixirr</span><span class="logo-item">SafeToNet</span><span class="logo-item">Visionable</span><span class="logo-item">B2X</span><span class="logo-item">Wealth Club</span><span class="logo-item">GPI</span><span class="logo-item">Xydus</span><span class="logo-item">IKUE</span>
-      <span class="logo-item">Virtualstock</span><span class="logo-item">Elixirr</span><span class="logo-item">SafeToNet</span><span class="logo-item">Visionable</span><span class="logo-item">B2X</span><span class="logo-item">Wealth Club</span><span class="logo-item">GPI</span><span class="logo-item">Xydus</span><span class="logo-item">IKUE</span>
+      <span class="logo-item"><img src="https://img.logo.dev/virtualstock.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Virtualstock" loading="lazy" onerror="this.parentNode.textContent='Virtualstock'"></span><span class="logo-item"><img src="https://img.logo.dev/elixirr.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Elixirr" loading="lazy" onerror="this.parentNode.textContent='Elixirr'"></span><span class="logo-item"><img src="https://img.logo.dev/safetonet.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="SafeToNet" loading="lazy" onerror="this.parentNode.textContent='SafeToNet'"></span><span class="logo-item"><img src="https://img.logo.dev/visionable.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Visionable" loading="lazy" onerror="this.parentNode.textContent='Visionable'"></span><span class="logo-item"><img src="https://img.logo.dev/b2x.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="B2X" loading="lazy" onerror="this.parentNode.textContent='B2X'"></span><span class="logo-item"><img src="https://img.logo.dev/wealthclub.co.uk?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Wealth Club" loading="lazy" onerror="this.parentNode.textContent='Wealth Club'"></span><span class="logo-item"><img src="https://img.logo.dev/xydus.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Xydus" loading="lazy" onerror="this.parentNode.textContent='Xydus'"></span><span class="logo-item">GPI</span><span class="logo-item">IKUE</span>
+      <span class="logo-item"><img src="https://img.logo.dev/virtualstock.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Virtualstock" loading="lazy" onerror="this.parentNode.textContent='Virtualstock'"></span><span class="logo-item"><img src="https://img.logo.dev/elixirr.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Elixirr" loading="lazy" onerror="this.parentNode.textContent='Elixirr'"></span><span class="logo-item"><img src="https://img.logo.dev/safetonet.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="SafeToNet" loading="lazy" onerror="this.parentNode.textContent='SafeToNet'"></span><span class="logo-item"><img src="https://img.logo.dev/visionable.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Visionable" loading="lazy" onerror="this.parentNode.textContent='Visionable'"></span><span class="logo-item"><img src="https://img.logo.dev/b2x.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="B2X" loading="lazy" onerror="this.parentNode.textContent='B2X'"></span><span class="logo-item"><img src="https://img.logo.dev/wealthclub.co.uk?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Wealth Club" loading="lazy" onerror="this.parentNode.textContent='Wealth Club'"></span><span class="logo-item"><img src="https://img.logo.dev/xydus.com?token=YOUR_LOGO_DEV_TOKEN&size=128&format=png&retina=true" alt="Xydus" loading="lazy" onerror="this.parentNode.textContent='Xydus'"></span><span class="logo-item">GPI</span><span class="logo-item">IKUE</span>
     </div>
   </div>
 </section>
