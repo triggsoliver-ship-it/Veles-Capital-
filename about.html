@@ -85,14 +85,10 @@ section .eyebrow.on-dark{color:var(--gold-soft)}
 }
 .nav.scrolled{background:rgba(9,28,21,.92);backdrop-filter:blur(14px);padding:14px 26px;box-shadow:0 6px 30px -12px rgba(0,0,0,.5)}
 .brand{display:flex;align-items:center;gap:12px;color:#fff}
-.brand .mark{
-  width:38px;height:38px;border-radius:9px;flex:none;
-  background:linear-gradient(135deg,var(--green-bright),var(--gold));
-  display:grid;place-items:center;font-family:var(--serif);font-weight:700;color:var(--forest);font-size:1.25rem;
-  box-shadow:0 6px 18px -6px rgba(46,156,107,.7);
-}
+.brand .mark{display:grid;place-items:center;flex:none;line-height:0}
+.brand .mark svg{filter:drop-shadow(0 4px 10px rgba(46,156,107,.45))}
 .brand .wordmark{font-family:var(--serif);font-size:1.32rem;font-weight:600;letter-spacing:.01em;line-height:1}
-.brand .wordmark small{display:block;font-family:var(--sans);font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-soft);font-weight:600;margin-top:3px}
+.brand .wordmark small{display:block;font-family:var(--sans);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);font-weight:600;margin-top:3px}
 .nav-links{display:flex;align-items:center;gap:30px}
 .nav-links a{color:rgba(255,255,255,.85);font-size:.92rem;font-weight:500;position:relative;transition:color .25s}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--gold);transition:width .3s var(--ease)}
@@ -392,7 +388,7 @@ section{padding:clamp(70px,10vw,130px) 0}
   <div class="container">
     <span class="eyebrow on-dark">Our Team</span>
     <h1>The team behind Veles Capital</h1>
-    <p>A firm built on decades of operating experience — leaders who have scaled, transformed and turned around some of the world's best-known technology and telecoms businesses, now working for ambitious UK companies.</p>
+    <p>A firm built on decades of operating experience — leaders who have scaled, transformed and turned around some of the world's best-known technology and telecoms businesses, now working for ambitious UK, European and US companies.</p>
   </div>
 </section>
 
@@ -428,7 +424,7 @@ section{padding:clamp(70px,10vw,130px) 0}
     </div>
     <div class="stats">
       <div class="stat reveal"><div class="num">€3bn→€14bn</div><div class="lbl">Market capitalisation growth under our founder's leadership</div></div>
-      <div class="stat reveal d1"><div class="num" data-count="25" data-suffix="m+">0</div><div class="lbl">Customer connections reached</div></div>
+      <div class="stat reveal d1"><div class="num" data-count="400" data-suffix="m+">0</div><div class="lbl">Customer connections reached</div></div>
       <div class="stat reveal d2"><div class="num">#1</div><div class="lbl">O2 made the leading consumer brand in Germany</div></div>
       <div class="stat reveal d3"><div class="num">2012</div><div class="lbl">Led one of Europe's largest IPOs of the year</div></div>
     </div>
@@ -508,8 +504,8 @@ section{padding:clamp(70px,10vw,130px) 0}
   <div class="container">
     <div class="footer-top">
       <div>
-        <a class="brand" href="/"><span class="mark">V</span><span class="wordmark">Veles Capital<small>Scalable Growth</small></span></a>
-        <p class="blurb">Consulting for scalable growth, growth investment, and corporate triage — for ambitious businesses across the United Kingdom.</p>
+        <a class="brand" href="/"><span class="mark"><svg viewBox="0 0 46 32" width="34" height="23" aria-hidden="true"><polygon points="4,30 12,30 18,19 10,19" fill="#2f9e6e"/><polygon points="16,30 24,30 30,13 22,13" fill="#46c98d"/><polygon points="28,30 36,30 42,7 34,7" fill="#c8a24a"/></svg></span><span class="wordmark">Veles Capital<small>Turn ideas into reality</small></span></a>
+        <p class="blurb">Consulting for scalable growth, growth investment, and corporate triage — for ambitious businesses across the UK, Europe and the US.</p>
       </div>
       <div><h5>Company</h5><a href="about.html">Team</a><a href="services.html">What We Do</a><a href="opportunities.html">For Investors</a><a href="journal.html">Insights</a><a href="contact.html">Contact</a><a href="legal.html">Legal &amp; FCA</a></div>
       <div><h5>Services</h5><a href="services.html#growth">Scalable Growth</a><a href="services.html#invest">Growth Investment</a><a href="services.html#triage">Triage &amp; Restructuring</a></div>
@@ -541,7 +537,7 @@ section{padding:clamp(70px,10vw,130px) 0}
   if(navMount){
     navMount.outerHTML =
       '<nav class="nav">'
-      + '<a class="brand" href="/"><span class="mark">V</span><span class="wordmark">Veles Capital<small>Scalable Growth</small></span></a>'
+      + '<a class="brand" href="/"><span class="mark"><svg viewBox="0 0 46 32" width="34" height="23" aria-hidden="true"><polygon points="4,30 12,30 18,19 10,19" fill="#2f9e6e"/><polygon points="16,30 24,30 30,13 22,13" fill="#46c98d"/><polygon points="28,30 36,30 42,7 34,7" fill="#c8a24a"/></svg></span><span class="wordmark">Veles Capital<small>Turn ideas into reality</small></span></a>'
       + '<div class="nav-links">'
       + '<a href="/"'+active('index.html')+'>Home</a>'
       + '<a href="'+pre+'services.html"'+active('services.html')+'>What We Do</a>'
