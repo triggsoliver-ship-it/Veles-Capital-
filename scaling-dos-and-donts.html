@@ -4,7 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Scaling Without Breaking — Veles Capital Insights</title>
-<meta name="description" content="What to start, stop and protect as you grow from a tight team into a real organisation — a scaling do's and don'ts guide from Veles Capital.">
+<meta name="description" content="What to do — and what to stop doing — as you grow from a team into an organisation. A scaling playbook from Veles Capital.">
+<!--SEO-->
+<meta name="keywords" content="scaling a business, scale-up, org design, operating model, hiring, growth without breaking, process">
+<meta name="author" content="Veles Capital Ltd">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0c2a1f">
+<link rel="canonical" href="https://velescapital.net/scaling-dos-and-donts.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Veles Capital">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Scaling Without Breaking — Veles Capital Insights">
+<meta property="og:description" content="What to do — and what to stop doing — as you grow from a team into an organisation. A scaling playbook from Veles Capital.">
+<meta property="og:url" content="https://velescapital.net/scaling-dos-and-donts.html">
+<meta property="og:image" content="https://velescapital.net/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Scaling Without Breaking — Veles Capital Insights">
+<meta name="twitter:description" content="What to do — and what to stop doing — as you grow from a team into an organisation. A scaling playbook from Veles Capital.">
+<meta name="twitter:image" content="https://velescapital.net/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -377,7 +396,49 @@ section{padding:clamp(70px,10vw,130px) 0}
 .legal .toc a:hover{color:var(--green)}
 .legal .updated{font-size:.85rem;color:var(--ink-soft);font-style:italic}
 
+
+/* ===== MOBILE & RESPONSIVE ENHANCEMENTS ===== */
+html,body{overflow-x:clip}
+.nav{z-index:1000}
+.nav-links{z-index:1001}
+.nav-toggle{z-index:1002;position:relative}
+.nav-links.open ~ .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-links.open ~ .nav-toggle span:nth-child(2){opacity:0}
+.nav-links.open ~ .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media(max-width:900px){
+  .portfolio{grid-template-columns:1fr 1fr}
+  div.steps[style]{grid-template-columns:1fr 1fr !important}
+}
+@media(max-width:640px){
+  .container{padding-left:20px;padding-right:20px}
+  section{padding-top:56px;padding-bottom:56px}
+  .hero{min-height:auto;padding:116px 0 72px}
+  .hero h1{font-size:clamp(2rem,8.5vw,2.7rem)}
+  .hero p.lead{font-size:1.02rem;margin:20px 0 30px}
+  .page-hero{padding:116px 0 46px !important}
+  .page-hero h1{font-size:clamp(1.85rem,7.6vw,2.4rem)}
+  h2{font-size:1.62rem}
+  .portfolio,.cards,.posts,.stats,.footer-top{grid-template-columns:1fr !important}
+  div.steps,div.steps[style]{grid-template-columns:1fr !important}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .hero-actions .btn,.cta .btn{width:100%;justify-content:center}
+  .logo-item{font-size:1.05rem}
+  .logo-item img{height:26px}
+  .logo-track{gap:40px}
+  .risk-strip{font-size:.72rem;padding:8px 12px;line-height:1.4}
+  .footer-base{flex-direction:column;gap:8px;align-items:flex-start}
+  .stat .num{font-size:2.6rem}
+  img{max-width:100%;height:auto}
+  table{display:block;width:100%;overflow-x:auto}
+}
+@media(max-width:380px){
+  .brand .wordmark{font-size:1.12rem}
+  .brand .wordmark small{letter-spacing:.1em;font-size:.5rem}
+  .brand .mark svg{width:30px;height:21px}
+}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Veles Capital","legalName":"Veles Capital Ltd","url":"https://velescapital.net/","logo":"https://velescapital.net/og-image.png","image":"https://velescapital.net/og-image.png","slogan":"Turn ideas into reality","description":"Consulting for scalable growth, growth investment and corporate turnaround for ambitious businesses in the UK, Europe and the US.","email":"rene@velescapital.net","address":{"@type":"PostalAddress","streetAddress":"Woodside House, Woodside, Chilworth","addressLocality":"Southampton","postalCode":"SO16 7LB","addressCountry":"GB"},"areaServed":["GB","EU","US"],"foundingLocation":"Southampton, United Kingdom"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Scaling Without Breaking \u2014 Veles Capital Insights","headline":"Scaling Without Breaking \u2014 Veles Capital Insights","description":"What to do \u2014 and what to stop doing \u2014 as you grow from a team into an organisation. A scaling playbook from Veles Capital.","url":"https://velescapital.net/scaling-dos-and-donts.html","isPartOf":{"@type":"WebSite","name":"Veles Capital","url":"https://velescapital.net/"},"publisher":{"@type":"Organization","name":"Veles Capital Ltd"}}</script>
 </head>
 <body>
 <div class="progress-bar"></div>
