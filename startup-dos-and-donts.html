@@ -436,9 +436,34 @@ html,body{overflow-x:clip}
   .brand .wordmark small{letter-spacing:.1em;font-size:.5rem}
   .brand .mark svg{width:30px;height:21px}
 }
+
+/* ===========================================================
+   POLISH LAYER — visual pop, depth, focus & CTA (additive)
+   Motion gated behind prefers-reduced-motion: no-preference.
+   =========================================================== */
+::selection{background:rgba(200,162,74,.28);color:var(--forest)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.btn:focus-visible{outline-offset:4px}
+img{height:auto}
+.btn-primary,.btn-gold{position:relative;overflow:hidden}
+.btn-primary::after,.btn-gold::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-18deg);pointer-events:none}
+.btn-primary:hover{box-shadow:0 16px 38px -12px rgba(31,111,78,.85)}
+.btn-gold:hover{box-shadow:0 16px 38px -14px rgba(200,162,74,.8)}
+.cta{position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(255,255,255,.05) 1px,transparent 0);background-size:34px 34px;-webkit-mask-image:radial-gradient(70% 80% at 50% 20%,#000,transparent);mask-image:radial-gradient(70% 80% at 50% 20%,#000,transparent);pointer-events:none}
+.cta>.container{position:relative;z-index:1}
+.card,.pcard,.post,.form{box-shadow:0 1px 2px rgba(12,42,31,.04),0 8px 24px -18px rgba(12,42,31,.25)}
+.article p a,.legal p a{color:var(--green);text-decoration:underline;text-decoration-color:rgba(31,111,78,.35);text-underline-offset:3px;transition:text-decoration-color .25s,color .25s}
+.article p a:hover,.legal p a:hover{color:var(--green-bright);text-decoration-color:currentColor}
+.article .stand{line-height:1.5}
+@media(prefers-reduced-motion:no-preference){
+  .btn-primary:hover::after,.btn-gold:hover::after{animation:btnSheen .85s var(--ease) forwards}
+  @keyframes btnSheen{to{left:130%}}
+  .card,.pcard,.post{transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease)}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Veles Capital","legalName":"Veles Capital Ltd","url":"https://velescapital.net/","logo":"https://velescapital.net/og-image.png","image":"https://velescapital.net/og-image.png","slogan":"Turn ideas into reality","description":"Consulting for scalable growth, growth investment and corporate turnaround for ambitious businesses in the UK, Europe and the US.","email":"rene@velescapital.net","address":{"@type":"PostalAddress","streetAddress":"Woodside House, Woodside, Chilworth","addressLocality":"Southampton","postalCode":"SO16 7LB","addressCountry":"GB"},"areaServed":["GB","EU","US"],"foundingLocation":"Southampton, United Kingdom"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"The Startup Do's & Don'ts \u2014 Veles Capital Insights","headline":"The Startup Do's & Don'ts \u2014 Veles Capital Insights","description":"The habits that separate startups that survive their first three years from the ones that don't \u2014 a practical do's and don'ts guide from Veles Capital.","url":"https://velescapital.net/startup-dos-and-donts.html","isPartOf":{"@type":"WebSite","name":"Veles Capital","url":"https://velescapital.net/"},"publisher":{"@type":"Organization","name":"Veles Capital Ltd"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"The Startup Do's & Don'ts — Veles Capital Insights","headline":"The Startup Do's & Don'ts — Veles Capital Insights","description":"The habits that separate startups that survive their first three years from the ones that don't — a practical do's and don'ts guide from Veles Capital.","url":"https://velescapital.net/startup-dos-and-donts.html","isPartOf":{"@type":"WebSite","name":"Veles Capital","url":"https://velescapital.net/"},"publisher":{"@type":"Organization","name":"Veles Capital Ltd"}}</script>
 </head>
 <body>
 <div class="progress-bar"></div>
