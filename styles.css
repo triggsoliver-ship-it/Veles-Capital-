@@ -306,6 +306,7 @@ section{padding:clamp(70px,10vw,130px) 0}
 .check input{margin-top:4px;width:20px;height:20px;flex:none;accent-color:var(--green)}
 .check span{font-size:.96rem;color:var(--ink)}
 .gate-note{font-size:.82rem;color:var(--ink-soft);margin-top:6px}
+#gateBtn:disabled{opacity:.45;cursor:not-allowed;transform:none}
 .locked{filter:blur(7px);pointer-events:none;user-select:none;opacity:.5}
 
 /* portfolio cards */
