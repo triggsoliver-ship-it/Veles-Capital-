@@ -1,7 +1,7 @@
-/* Veles Capital — cookie consent + Google Analytics (GA4, Consent Mode v2) */
+/* HHS Capital — cookie consent + Google Analytics (GA4, Consent Mode v2) */
 (function(){
   var GA_ID = 'G-55TJ57M3QL';
-  var KEY = 'veles-consent';
+  var KEY = 'hhs-consent';
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   window.gtag = gtag;

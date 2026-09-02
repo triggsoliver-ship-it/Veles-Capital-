@@ -1,4 +1,4 @@
-/* VELES CAPITAL — interactions */
+/* HHS CAPITAL — interactions */
 (function(){
   // ---- shared nav injection ----
   var path = location.pathname;
@@ -14,7 +14,7 @@
   if(navMount){
     navMount.outerHTML =
       '<nav class="nav">'
-      + '<a class="brand" href="'+pre+'index.html"><span class="mark">V</span><span class="wordmark">Veles Capital<small>Scalable Growth</small></span></a>'
+      + '<a class="brand" href="'+pre+'index.html"><span class="mark">V</span><span class="wordmark">HHS Capital<small>Scalable Growth</small></span></a>'
       + '<div class="nav-links">'
       + '<a href="'+pre+'index.html"'+active('index.html')+'>Home</a>'
       + '<a href="'+pre+'services.html"'+active('services.html')+'>What We Do</a>'

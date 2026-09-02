@@ -1,4 +1,4 @@
-/* Veles Capital — cookie consent + Google Analytics (GA4, Consent Mode v2) */
+/* HHS Capital — cookie consent + Google Analytics (GA4, Consent Mode v2) */
 /* Plus progressive accessibility enhancements applied site-wide:
    - injects a keyboard "Skip to content" link
    - wraps the primary content in a <main id="main"> landmark when absent
@@ -7,7 +7,7 @@
    <script src="js/app.js" defer>. */
 (function(){
   var GA_ID = 'G-55TJ57M3QL';
-  var KEY = 'veles-consent';
+  var KEY = 'hhs-consent';
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   window.gtag = gtag;
