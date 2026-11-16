@@ -99,3 +99,6 @@
   }
   if(document.body) init(); else document.addEventListener('DOMContentLoaded',init);
 })();
+
+/* premium layer: type scale, depth and motion (js/premium.js) */
+(function(){var s=document.createElement('script');s.src='/js/premium.js';s.defer=true;document.head.appendChild(s);})();
